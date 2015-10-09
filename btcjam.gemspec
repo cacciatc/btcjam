@@ -5,9 +5,9 @@ require 'btcjam/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "btcjam"
-  spec.version       = Btcjam::VERSION
+  spec.version       = BTCJam::VERSION
   spec.authors       = ["Chris Cacciatore"]
-  spec.email         = ["chris.cacciatore@gmail.com"]
+  spec.email         = ["chris.cacciatore@dullahansoft.com"]
   spec.summary       = %q{Gem to wrap BTCJam API.}
   spec.description   = %q{}
   spec.homepage      = ""
