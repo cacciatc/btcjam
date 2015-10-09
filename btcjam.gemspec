@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = BTCJam::VERSION
   spec.authors       = ["Chris Cacciatore"]
   spec.email         = ["chris.cacciatore@dullahansoft.com"]
-  spec.summary       = %q{Gem to wrap BTCJam API.}
+  spec.summary       = %q{A gem to wrap the BTCJam API.}
   spec.description   = %q{}
   spec.homepage      = ""
   spec.license       = "MIT"
