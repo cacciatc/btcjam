@@ -1,4 +1,4 @@
-# Btcjam
+# btcjam
 
 A Ruby interface to the BTCJam API.
 
