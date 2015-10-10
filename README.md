@@ -41,7 +41,7 @@ BTCJam::PaymentTypes.all
 BTCJam::AutomaticPlanTemplates.all
 ```
 
-If you want to ask more interesting things, then you'll need a BCTJam account and need [to register an app](https://btcjam.com/oauth/applications) with BTCJam and then grab your Application ID and Secret:
+If you want to ask more interesting things, then you'll need a BCTJam account and need [to register an app](https://btcjam.com/oauth/applications) with BTCJam. Finally, grab your Application ID and Secret:
 
 ```ruby
 require 'btcjam'
