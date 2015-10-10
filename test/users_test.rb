@@ -35,4 +35,16 @@ describe "BTCJam::Users" do
 		assert profile.id == 123
 		assert profile.email == "test@example.com"
 	end
+
+	it "should support retrieving an authenticated user's open listings" do
+		stub_request(:get, "https://btcjam.com/api/v1/my_open_listings.json").
+			to_return(:body => [{:id => 123, :title => "Blarg"}].to_json)
+		
+		token = "12345"	
+		listings = BTCJam::Users.open_listings token
+		
+		assert listings.class == Array
+		assert listings.first.id == 123
+		assert listings.first.title == "Blarg"
+	end
 end
