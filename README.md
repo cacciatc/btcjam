@@ -72,11 +72,12 @@ BTCJam.configure do |config|
 end
 
 # send the user here to authorize
-auth = BTCJam::Oauth.new
+auth = BTCJam::OAuth.new
 
 url = auth.authorization_url
 
 # assuming you get a code back
+code = "<CODE YOU RECEIVED IN CALLBACK>"
 access_token = auth.get_access_token(code)
 
 # retrieve the auth'd user's profile
