@@ -47,4 +47,66 @@ describe 'BTCJam::Users' do
     assert listings.first.id == 123
     assert listings.first.title == 'Blarg'
   end
+
+  it "should support retrieving an authenticated user's recieables" do
+    stub_request(:get, 'https://btcjam.com/api/v1/my_receivables.json')
+      .to_return(body: { user: { id: 123, amount_received: 0.0 } }.to_json)
+
+    token = '12345'
+    receivables = BTCJam::Users.receivables token
+
+    assert receivables.id == 123
+    assert receivables.amount_received == 0.0
+  end
+
+  it "should support retrieving an authenticated user's payables" do
+    stub_request(:get, 'https://btcjam.com/api/v1/my_payables.json')
+      .to_return(body: { user: { id: 123, amount_paid: 0.0 } }.to_json)
+
+    token = '12345'
+    payables = BTCJam::Users.payables token
+
+    assert payables.id == 123
+    assert payables.amount_paid == 0.0
+  end
+
+  it "should support retrieving an authenticated user's identity checks" do
+    stub_request(:get, 'https://btcjam.com/api/v1/identity_checks.json')
+      .to_return(body: { identity_checks: [] }.to_json)
+
+    token = '12345'
+    identity_checks = BTCJam::Users.identity_checks token
+
+    assert identity_checks.class == Array
+  end
+
+  it "should support retrieving an authenticated user's credit checks" do
+    stub_request(:get, 'https://btcjam.com/api/v1/credit_checks.json')
+      .to_return(body: { credit_checks: [] }.to_json)
+
+    token = '12345'
+    credit_checks = BTCJam::Users.credit_checks token
+
+    assert credit_checks.class == Array
+  end
+
+  it "should support retrieving an authenticated user's address checks" do
+    stub_request(:get, 'https://btcjam.com/api/v1/addr_checks.json')
+      .to_return(body: { addr_checks: [] }.to_json)
+
+    token = '12345'
+    addr_checks = BTCJam::Users.addr_checks token
+
+    assert addr_checks.class == Array
+  end
+
+  it "should support retrieving an authenticated user's automatic plans" do
+    stub_request(:get, 'https://btcjam.com/api/v1/automatic_plans.json')
+      .to_return(body: { automatic_plans: [] }.to_json)
+
+    token = '12345'
+    addr_checks = BTCJam::Users.automatic_plans token
+
+    assert addr_checks.class == Array
+  end
 end

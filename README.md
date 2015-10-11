@@ -58,6 +58,49 @@ BTCJam::Listings.all
 BTCJam::Users.create "bilbo.baggins@shire.com", "Elevensies11"
 ```
 
+Lastly, the following API methods require an authenticated user:
+
+```ruby
+require 'btcjam'
+BTCJam.configure do |config|
+	config.client_id     = "<YOUR APPLICATION ID>"
+	config.client_secret = "<YOUR SECRET>"
+	config.scopes				 = [:basic_profile, :extended_profile, :make_loan,
+													:identity_information, :address_information, :income_information,
+													:invest, :trade, :withdraw, :submit_documents, :manage_references]
+	config.redirect_uri  = "<YOUR REGISTERED CALLBACK URL>"
+end
+
+# send the user here to authorize
+auth = BTCJam::Oauth.new
+
+url   = auth.authorization_url
+
+# assuming you get a code back
+access_token = auth.get_access_token(code)
+
+# retrive the auth'd user's profile
+BTCJam::Users.profile access_token.token
+
+# retrive the auth'd user's payables
+BTCJam::Users.payables access_token.token
+
+# retrive the auth'd user's receivables
+BTCJam::Users.receivables access_token.token
+
+# retrive the auth'd user's credit checks
+BTCJam::Users.credit_checks access_token.token
+
+# retrive the auth'd user's addr checks
+BTCJam::Users.addr_checks access_token.token
+
+# retrive the auth'd user's identity checks
+BTCJam::Users.identity_checks access_token.token
+
+# retrive the auth'd user's open listings
+BTCJam::Users.open_listings access_token.token
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/cacciatc/btcjam/fork )

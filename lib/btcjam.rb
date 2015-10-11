@@ -33,7 +33,7 @@ module BTCJam
                            site: API_PUBLIC_URL)
     end
 
-    def authorization_url(_options)
+    def authorization_url
       @client.auth_code.authorize_url(redirect_uri: BTCJam.redirect_uri)
     end
 
