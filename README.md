@@ -6,7 +6,7 @@ A Ruby interface to the BTCJam API.
 
 ## Disclaimer
 
-Note, investing with BTCJam involves risk. Use this API at your own risk.
+Note, investing with BTCJam involves risk. This API is not production ready; use at your own risk.
 
 ## Installation
 
