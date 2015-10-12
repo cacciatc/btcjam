@@ -2,11 +2,11 @@ require 'faraday'
 require 'json'
 require 'ostruct'
 
-module BTCJam
+module BTCJammer
   # https://btcjam.com/faq/api
-  class AutomaticPlanTemplates
+  class NationalIDTypes
     def self.all
-      response = Faraday.get("#{API_PUBLIC_URL}/automatic_plan_templates.json")
+      response = Faraday.get("#{API_PUBLIC_URL}/nationalid_types.json")
       JSON.parse(response.body).collect { |t| OpenStruct.new t }
     end
   end

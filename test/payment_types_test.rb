@@ -1,13 +1,13 @@
 require './test/test_helper'
 
-describe 'BTCJam::PaymentTypes' do
+describe 'BTCJammer::PaymentTypes' do
   it 'should exist for sure' do
-    assert BTCJam::PaymentTypes
+    assert BTCJammer::PaymentTypes
   end
 
   it 'should return a list of all supported payment types' do
     VCR.use_cassette('payment_types') do
-      types = BTCJam::PaymentTypes.all
+      types = BTCJammer::PaymentTypes.all
 
       assert types.is_a? Array
       assert types.length == 5

@@ -1,17 +1,17 @@
 require 'ostruct'
 require 'oauth2'
 
-require_relative 'btcjam/version'
-require_relative 'btcjam/currencies'
-require_relative 'btcjam/payment_types'
-require_relative 'btcjam/automatic_plan_templates'
-require_relative 'btcjam/employment_statuses'
-require_relative 'btcjam/national_id_types'
-require_relative 'btcjam/listings'
-require_relative 'btcjam/users'
+require_relative 'btcjammer/version'
+require_relative 'btcjammer/currencies'
+require_relative 'btcjammer/payment_types'
+require_relative 'btcjammer/automatic_plan_templates'
+require_relative 'btcjammer/employment_statuses'
+require_relative 'btcjammer/national_id_types'
+require_relative 'btcjammer/listings'
+require_relative 'btcjammer/users'
 
 # Contains all the BTCJam API magic
-module BTCJam
+module BTCJammer
   API_URL = 'https://btcjam.com/api/v1'
   API_PUBLIC_URL = 'https://btcjam.com'
 
@@ -34,7 +34,8 @@ module BTCJam
     end
 
     def authorization_url
-      @client.auth_code.authorize_url(redirect_uri: BTCJam.redirect_uri, scope: BTCJam.scopes.join(' '))
+      @client.auth_code.authorize_url(redirect_uri: BTCJam.redirect_uri,
+                                      scope: BTCJam.scopes.join(' '))
     end
 
     def get_access_token(code)

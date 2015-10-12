@@ -1,4 +1,4 @@
 # Holds all the API magic!
-module BTCJam
+module BTCJammer
   VERSION = '0.0.1'
 end

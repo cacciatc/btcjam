@@ -1,13 +1,13 @@
 require './test/test_helper'
 
-describe 'BTCJam::EmploymentStatuses' do
+describe 'BTCJammer::EmploymentStatuses' do
   it 'should exist for sure' do
-    assert BTCJam::EmploymentStatuses
+    assert BTCJammer::EmploymentStatuses
   end
 
   it 'should return a list of all supported employment statuses' do
     VCR.use_cassette('employee_statuses') do
-      statuses = BTCJam::EmploymentStatuses.all
+      statuses = BTCJammer::EmploymentStatuses.all
 
       assert statuses.is_a? Array
       assert statuses.length == 5

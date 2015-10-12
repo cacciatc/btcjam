@@ -2,12 +2,14 @@ require 'faraday'
 require 'json'
 require 'ostruct'
 
-module BTCJam
+module BTCJammer
   # https://btcjam.com/faq/api
   class Listings
     def self.all
       url = "#{API_URL}/"
-      url += "listings.json?appid=#{BTCJam.client_id}&secret=#{BTCJam.client_secret}"
+      url += "listings.json?appid=#{BTCJammer.client_id}&"
+      url += "secret=#{BTCJammer.client_secret}"
+
       response = Faraday.get(url)
 
       JSON.parse(response.body).collect do |c|

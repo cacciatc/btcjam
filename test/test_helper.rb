@@ -1,4 +1,4 @@
-require './lib/btcjam'
+require './lib/btcjammer'
 require 'minitest/autorun'
 require 'webmock/minitest'
 require 'vcr'

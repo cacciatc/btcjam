@@ -3,7 +3,7 @@ require 'json'
 require 'ostruct'
 require 'oauth'
 
-module BTCJam
+module BTCJammer
   # Contains user authenticated API calls https://btcjam.com/faq/api
   class Users
     def self.get_client(access_token)
@@ -26,7 +26,8 @@ module BTCJam
 
     def self.create(email, password)
       url = "#{API_URL}/"
-      url += "users.json?appid=#{BTCJam.client_id}&secret=#{BTCJam.client_secret}"
+      url += "users.json?appid=#{BTCJammer.client_id}&"
+      url += "secret=#{BTCJammer.client_secret}"
 
       response = Faraday.post(url, email: email, password: password)
 
@@ -50,7 +51,8 @@ module BTCJam
     end
 
     def self.identity_checks(access_token)
-      api_call(access_token, :identity_checks, :object).identity_checks.collect do |i|
+      api_call(access_token, :identity_checks, :object)
+        .identity_checks.collect do |i|
         OpenStruct.new i
       end
     end
@@ -62,13 +64,24 @@ module BTCJam
     end
 
     def self.credit_checks(access_token)
-      api_call(access_token, :credit_checks, :object).credit_checks.collect do |i|
+      api_call(access_token, :credit_checks, :object)
+        .credit_checks.collect do |i|
         OpenStruct.new i
       end
     end
 
+    def self.invest(access_token, listing_id, amount)
+      token = get_client access_token
+      response = token.post("#{API_URL}/investments.json",
+                            body: { listing_id: listing_id, amount: amount })
+
+      investment = OpenStruct.new(JSON.parse(response.body)).listing_investment
+      OpenStruct.new investment
+    end
+
     def self.automatic_plans(access_token)
-      api_call(access_token, :automatic_plans, :object).automatic_plans.collect do |i|
+      api_call(access_token, :automatic_plans, :object)
+        .automatic_plans.collect do |i|
         OpenStruct.new i
       end
     end

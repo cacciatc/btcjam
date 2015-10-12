@@ -23,9 +23,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 09 Oct 2015 07:37:56 GMT
+      - Mon, 12 Oct 2015 06:07:09 GMT
       Server:
-      - nginx/1.6.2 + Phusion Passenger 4.0.48
+      - nginx/1.6.2 + Phusion Passenger 4.0.50
       Status:
       - 401 Unauthorized
       Strict-Transport-Security:
@@ -35,11 +35,11 @@ http_interactions:
       X-Frame-Options:
       - ALLOW-FROM https://www.optimizely.com/
       X-Powered-By:
-      - Phusion Passenger 4.0.48
+      - Phusion Passenger 4.0.50
       X-Request-Id:
-      - acae959f-de60-4392-b83e-ddbe612ad814
+      - ccaa3137-29bd-4bce-9250-bd32b58560cf
       X-Runtime:
-      - '0.023008'
+      - '0.018190'
       X-Xss-Protection:
       - 1; mode=block
       Transfer-Encoding:
@@ -50,5 +50,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"error":"You need to log in or sign up before continuing."}'
     http_version: 
-  recorded_at: Fri, 09 Oct 2015 07:37:56 GMT
+  recorded_at: Mon, 12 Oct 2015 06:07:05 GMT
 recorded_with: VCR 2.9.3

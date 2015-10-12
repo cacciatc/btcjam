@@ -1,13 +1,13 @@
 require './test/test_helper'
 
-describe 'BTCJam::NationalIDTypes' do
+describe 'BTCJammer::NationalIDTypes' do
   it 'should exist for sure' do
-    assert BTCJam::NationalIDTypes
+    assert BTCJammer::NationalIDTypes
   end
 
   it 'should return a list of all supported national ID types' do
     VCR.use_cassette('national_id_types') do
-      types = BTCJam::NationalIDTypes.all
+      types = BTCJammer::NationalIDTypes.all
 
       assert types.is_a? Array
       assert types.length == 3

@@ -2,7 +2,7 @@ require 'faraday'
 require 'json'
 require 'ostruct'
 
-module BTCJam
+module BTCJammer
   # https://btcjam.com/faq/api
   class PaymentTypes
     def self.all

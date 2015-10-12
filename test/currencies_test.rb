@@ -1,13 +1,13 @@
 require './test/test_helper'
 
-describe 'BTCJam::Currencies' do
+describe 'BTCJammer::Currencies' do
   it 'should exist for sure' do
-    assert BTCJam::Currencies
+    assert BTCJammer::Currencies
   end
 
   it 'should return a list of all supported currencies' do
     VCR.use_cassette('currencies') do
-      currencies = BTCJam::Currencies.all
+      currencies = BTCJammer::Currencies.all
 
       assert currencies.is_a? Array
       assert currencies.length == 7

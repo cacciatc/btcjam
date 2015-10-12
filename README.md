@@ -1,4 +1,4 @@
-# btcjam
+# btcjammer
 
 A Ruby interface to the BTCJam API.
 
@@ -11,7 +11,7 @@ Note, investing with BTCJam involves risk as with all investments. Use this API 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'btcjam'
+gem 'btcjammer'
 ```
 
 And then execute:
@@ -20,53 +20,53 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install btcjam
+    $ gem install btcjammer
 
 ## Usage
 
 After installation and without further configuration you can use the following API methods:
 
 ```ruby
-require 'btcjam'
+require 'btcjammer'
 
 # returns an array of currencies
-BTCJam::Currencies.all
+BTCJammer::Currencies.all
 
 # returns an array of employment types
-BTCJam::EmploymentTypes.all
+BTCJammer::EmploymentTypes.all
 
 # returns an array of national ID types
-BTCJam::NationalIDTypes.all
+BTCJammer::NationalIDTypes.all
 
 # returns an array of payment types
-BTCJam::PaymentTypes.all
+BTCJammer::PaymentTypes.all
 
 # returns an array of automatic plan templates
-BTCJam::AutomaticPlanTemplates.all
+BTCJammer::AutomaticPlanTemplates.all
 ```
 
 If you want to ask more interesting things, then you'll need a BCTJam account and need [to register an app](https://btcjam.com/oauth/applications) with BTCJam. Finally, grab your Application ID and Secret:
 
 ```ruby
-require 'btcjam'
+require 'btcjammer'
 
-BTCJam.configure do |config|
+BTCJammer.configure do |config|
 	config.client_id     = "<YOUR APPLICATION ID>"
 	config.client_secret = "<YOUR SECRET>"
 end
 
 # returns an array of listings (not sure yet if it is paginated and if so how)
-BTCJam::Listings.all
+BTCJammer::Listings.all
 
 # creates a new user (not very well tested currently)
-BTCJam::Users.create "bilbo.baggins@shire.com", "Elevensies11"
+BTCJammer::Users.create "bilbo.baggins@shire.com", "Elevensies11"
 ```
 
 Lastly, the following API methods require an authenticated user:
 
 ```ruby
-require 'btcjam'
-BTCJam.configure do |config|
+require 'btcjammer'
+BTCJammer.configure do |config|
 	config.client_id     = "<YOUR APPLICATION ID>"
 	config.client_secret = "<YOUR SECRET>"
 	config.scopes				 = [:basic_profile, :extended_profile, :make_loan,
@@ -76,7 +76,7 @@ BTCJam.configure do |config|
 end
 
 # send the user here to authorize
-auth = BTCJam::OAuth.new
+auth = BTCJammer::OAuth.new
 
 url = auth.authorization_url
 
@@ -85,34 +85,36 @@ code = "<CODE YOU RECEIVED IN CALLBACK>"
 access_token = auth.get_access_token(code)
 
 # or if you have a saved token
-access_token = BTCJam::OAuth.from_token token
+access_token = BTCJammer::OAuth.from_token token
 
 # retrieve the auth'd user's profile
-BTCJam::Users.profile access_token.token
+BTCJammer::Users.profile access_token.token
 
 # retrieve the auth'd user's payables
-BTCJam::Users.payables access_token.token
+BTCJammer::Users.payables access_token.token
 
 # retrieve the auth'd user's receivables
-BTCJam::Users.receivables access_token.token
+BTCJammer::Users.receivables access_token.token
 
 # retrieve the auth'd user's credit checks
-BTCJam::Users.credit_checks access_token.token
+BTCJammer::Users.credit_checks access_token.token
 
 # retrieve the auth'd user's addr checks
-BTCJam::Users.addr_checks access_token.token
+BTCJammer::Users.addr_checks access_token.token
 
 # retrieve the auth'd user's identity checks
-BTCJam::Users.identity_checks access_token.token
+BTCJammer::Users.identity_checks access_token.token
 
 # retrieve the auth'd user's open listings
-BTCJam::Users.open_listings access_token.token
+BTCJammer::Users.open_listings access_token.token
 ```
 
 ## Contributing
 
-1. Fork it ( https://github.com/cacciatc/btcjam/fork )
+1. Fork it ( https://github.com/cacciatc/btcjammer/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+3. Write tests
+4. Run rubocop
+5. Commit your changes (`git commit -am 'Add some feature'`)
+6. Push to the branch (`git push origin my-new-feature`)
+7. Create a new Pull Request

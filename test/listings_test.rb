@@ -1,17 +1,20 @@
 require './test/test_helper'
 
-describe 'BTCJam::Listings' do
+describe 'BTCJammer::Listings' do
+  before do
+    BTCJammer.configure do |config|
+      config.client_id     = 'test_id'
+      config.client_secret = 'test_secret'
+    end
+  end
+
   it 'should exist for sure' do
-    assert BTCJam::Listings
+    assert BTCJammer::Listings
   end
 
   it 'should return a list of all open listings' do
     VCR.turn_off! ignore_cassettes: true
 
-    BTCJam.configure do |config|
-      config.client_id = 'test_id'
-      config.client_secret = 'test_secret'
-    end
     stub_request(:get, 'https://btcjam.com/api/v1/listings.json?appid=test_id&secret=test_secret')
       .to_return(body: [
         {
@@ -28,7 +31,7 @@ describe 'BTCJam::Listings' do
         }
       ].to_json)
 
-    listings = BTCJam::Listings.all
+    listings = BTCJammer::Listings.all
 
     assert listings.is_a? Array
 
