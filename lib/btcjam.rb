@@ -27,18 +27,23 @@ module BTCJam
   # Helper methods around OAuth2
   class OAuth
     include OAuth2
-    attr_reader :token
+    attr_accessor :client
     def initialize
       @client = Client.new(BTCJam.client_id, BTCJam.client_secret,
                            site: API_PUBLIC_URL)
     end
 
     def authorization_url
-      @client.auth_code.authorize_url(redirect_uri: BTCJam.redirect_uri)
+      @client.auth_code.authorize_url(redirect_uri: BTCJam.redirect_uri, scope: BTCJam.scopes.join(' '))
     end
 
     def get_access_token(code)
       @client.auth_code.get_token(code, redirect_uri: BTCJam.redirect_uri)
+    end
+
+    def self.from_token(token)
+      auth = OAuth.new
+      OAuth2::AccessToken.new(auth.client, token)
     end
   end
 
