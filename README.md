@@ -1,4 +1,6 @@
 # btcjammer
+[![Gem Version](https://badge.fury.io/rb/btcjammer.svg)](https://badge.fury.io/rb/btcjammer)
+[![Build Status](https://travis-ci.org/cacciatc/btcjammer.svg)](https://travis-ci.org/cacciatc/btcjammer)
 
 A Ruby interface to the BTCJam API.
 
