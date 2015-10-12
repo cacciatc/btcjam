@@ -10,6 +10,8 @@ require_relative 'btcjammer/national_id_types'
 require_relative 'btcjammer/listings'
 require_relative 'btcjammer/users'
 require_relative 'btcjammer/terms'
+require_relative 'btcjammer/submit_documents'
+require_relative 'btcjammer/automatic_plans'
 
 # Contains all the BTCJam API magic
 module BTCJammer

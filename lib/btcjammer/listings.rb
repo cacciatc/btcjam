@@ -22,10 +22,18 @@ module BTCJammer
 
     def self.create(access_token, params)
       token    = BTCJammer.get_client access_token
-      response = token.post("#{API_URL}/listings.json", body: params.to_json)
+      response = token.post("#{API_URL}/listings.json", body: { listing: params.to_json })
 
       result = OpenStruct.new JSON.parse(response.body)
       OpenStruct.new(result.listing)
+    end
+
+    def self.create_lead(access_token, params)
+      token = BTCJammer.get_client access_token
+      response = token.post("#{API_URL}/lead_listings.json", body: { lead_listing: params.to_json })
+
+      result = OpenStruct.new JSON.parse(response.body)
+      OpenStruct.new(result.lead_listing)
     end
   end
 end

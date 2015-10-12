@@ -48,7 +48,7 @@ describe 'BTCJammer::Listings' do
 
   it 'should allow an authenticated user to create a listing' do
     stub_request(:post, 'https://btcjam.com/api/v1/listings.json')
-      .with(body: { "{\"loan_purpose_id\":1,\"currency_id\":2,\"amount\":0.01,\"term_days\":123,\"payment_type_id\":3,\"locale_id\":4,\"title\":\"A new listing\",\"description\":\"Sweet!\"}" => true },
+      .with(body: { 'listing' => "{\"loan_purpose_id\":1,\"currency_id\":2,\"amount\":0.01,\"term_days\":123,\"payment_type_id\":3,\"locale_id\":4,\"title\":\"A new listing\",\"description\":\"Sweet!\"}" },
             headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization' => 'Bearer 12354', 'Content-Type' => 'application/x-www-form-urlencoded', 'User-Agent' => 'Faraday v0.9.2' })
       .to_return(status: 200, body: { listing: { success: true } }.to_json, headers: {})
 

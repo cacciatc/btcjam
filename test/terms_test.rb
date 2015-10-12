@@ -15,7 +15,7 @@ describe 'BTCJammer::Terms' do
       assert terms.first.id == 4
       assert terms.first.name == '1 Month'
       assert terms.first.short_term == true
-      assert terms.first.term_days  == 30
+      assert terms.first.term_days == 30
     end
   end
 end
