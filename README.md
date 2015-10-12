@@ -127,6 +127,8 @@ BTCJammer::Listings.create access_token.token, params
 
 ## Contributing
 
+If you would like ideas on what to work on, then please send me a line. There are plenty of opportunities to refactor code and extend the current functionality.
+
 1. Fork it ( https://github.com/cacciatc/btcjammer/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Write tests
