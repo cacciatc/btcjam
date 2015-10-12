@@ -48,5 +48,24 @@ module BTCJammer
     end
   end
 
+  def self.get_client(access_token)
+    id     = ENV['BTCJAM_CLIENT_ID']
+    secret = ENV['BTCJAM_CLIENT_SECRET']
+    client = OAuth2::Client.new id, secret, site: 'https://btcjam.com'
+
+    OAuth2::AccessToken.new client, access_token
+  end
+
+  def self.api_call(access_token, symbol, type)
+    token = get_client access_token
+    response = token.get("#{API_URL}/#{symbol}.json")
+
+    if type == :object
+      OpenStruct.new JSON.parse(response.body)
+    elsif type == :array
+      JSON.parse(response.body).collect { |i| OpenStruct.new i }
+    end
+  end
+
   extend Configuration
 end

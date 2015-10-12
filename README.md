@@ -4,7 +4,7 @@ A Ruby interface to the BTCJam API.
 
 ## Disclaimer
 
-Note, investing with BTCJam involves risk as with all investments. Use this API at your own risk.
+Note, investing with BTCJam involves risk. Use this API at your own risk.
 
 ## Installation
 
@@ -107,6 +107,22 @@ BTCJammer::Users.identity_checks access_token.token
 
 # retrieve the auth'd user's open listings
 BTCJammer::Users.open_listings access_token.token
+
+# invest in a listing
+BTCJammer::User.invest access_token.token, {:listing_id => 123, :amount => 0.1}
+
+# create a new listing
+params = {
+  loan_purpose_id: 1,
+  currency_id: 2,
+  amount: 0.01,
+  term_days: 123,
+  payment_type_id: 3,
+  locale_id: 4,
+  title: 'A new listing',
+	description: 'Sweet!'
+}
+BTCJammer::Listings.create access_token.token, params
 ```
 
 ## Contributing
