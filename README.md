@@ -2,6 +2,10 @@
 
 A Ruby interface to the BTCJam API.
 
+## Disclaimer
+
+Note, investing with BTCJam involves risk as with all investments. Use this API at your own risk.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -79,6 +83,9 @@ url = auth.authorization_url
 # assuming you get a code back
 code = "<CODE YOU RECEIVED IN CALLBACK>"
 access_token = auth.get_access_token(code)
+
+# or if you have a saved token
+access_token = BTCJam::OAuth.from_token token
 
 # retrieve the auth'd user's profile
 BTCJam::Users.profile access_token.token
